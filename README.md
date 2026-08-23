@@ -1,2 +1,2 @@
 # biblioteca.digital
-Esta es una aplicación sobre una biblioteca digital 
+En esta pagina se creara una plataforma sobre la biblioteca digital del H. Ayuntamiento de Camerino Z. Mendoza. 
