@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reserve a Space | Civic Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#70787d",
+                    "tertiary-container": "#7b4f16",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eff1f2",
+                    "surface-dim": "#d8dadb",
+                    "background": "#f8fafb",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#9bd7f7",
+                    "on-tertiary-fixed-variant": "#663e04",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f2f4f5",
+                    "secondary-fixed-dim": "#ecc06c",
+                    "tertiary": "#5f3800",
+                    "on-secondary-fixed-variant": "#5d4200",
+                    "on-surface": "#191c1d",
+                    "surface": "#f8fafb",
+                    "on-primary": "#ffffff",
+                    "secondary": "#7a590c",
+                    "on-surface-variant": "#40484d",
+                    "surface-tint": "#236580",
+                    "secondary-fixed": "#ffdea5",
+                    "tertiary-fixed": "#ffddbb",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-container": "#ffc484",
+                    "inverse-primary": "#92cfee",
+                    "on-tertiary-fixed": "#2b1700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001e2b",
+                    "primary-container": "#1a5f7a",
+                    "secondary-container": "#fed17b",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#eceeef",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#c0c8cd",
+                    "primary-fixed": "#c0e8ff",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-fixed-dim": "#f7bb78",
+                    "surface-container-high": "#e6e8e9",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f8fafb",
+                    "on-primary-fixed-variant": "#004d66",
+                    "on-secondary-fixed": "#271900",
+                    "on-secondary-container": "#78580b",
+                    "primary": "#00475e",
+                    "primary-fixed-dim": "#92cfee",
+                    "surface-variant": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "gutter": "24px",
+                    "xs": "0.25rem",
+                    "sm": "0.5rem",
+                    "xl": "2.5rem",
+                    "lg": "1.5rem",
+                    "container-max": "1280px",
+                    "md": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        .soft-shadow:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pt-[72px]">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b-2 border-secondary dark:border-secondary-fixed flex justify-between items-center px-lg py-sm h-[72px]">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">Civic Library</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">Catalog</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-secondary pb-1" href="#">Spaces</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">Dashboard</a>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary w-64 text-label-md" placeholder="Search spaces..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-lg py-xl">
+<!-- Hero & Scheduler Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-xl mb-xl">
+<div class="lg:col-span-8">
+<h1 class="font-display-lg text-display-lg mb-sm text-primary">Reserve Your Ideal Workspace</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    From silent study pods to collaborative conference halls, find the perfect environment for your productivity and community engagement.
+                </p>
+</div>
+<!-- Floating Scheduler Card -->
+<div class="lg:col-span-4 glass-panel p-lg rounded-xl border border-outline-variant soft-shadow">
+<div class="flex items-center gap-sm mb-md text-primary">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<h3 class="font-headline-md text-headline-md">Quick Schedule</h3>
+</div>
+<div class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Select Date</label>
+<input class="w-full p-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-primary focus:border-primary" type="date"/>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Start Time</label>
+<input class="w-full p-sm bg-surface-container-lowest border border-outline-variant rounded-lg" type="time"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Duration</label>
+<select class="w-full p-sm bg-surface-container-lowest border border-outline-variant rounded-lg">
+<option>1 Hour</option>
+<option>2 Hours</option>
+<option>4 Hours</option>
+</select>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-md rounded-lg hover:bg-secondary-fixed transition-all active:scale-95 flex justify-center items-center gap-sm">
+                        Find Available Slots
+                    </button>
+</div>
+</div>
+</section>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-sm mb-lg">
+<button class="px-lg py-sm rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-md">All Spaces</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-outline-variant transition-colors">Study Rooms</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-outline-variant transition-colors">Event Halls</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-outline-variant transition-colors">Maker Spaces</button>
+</div>
+<!-- Bento Gallery of Spaces -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Space Card: Private Study Room -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden soft-shadow transition-all duration-300">
+<div class="h-56 overflow-hidden relative">
+<div class="absolute top-4 right-4 z-10 bg-surface-container-lowest/90 px-sm py-xs rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-caption font-caption text-on-surface">Available</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A brightly lit, minimalist private study room in a modern library. The room features a clean oak wood desk, an ergonomic white chair, and a large window overlooking a peaceful green garden. The aesthetic is calm and orderly with a palette of soft blues and warm wood tones, captured in high-resolution architectural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFs0PemvKkvExafTLqTF4bibysw_19yKf7FB4JbuObvuLDaCNJ3vdVdHUvUvrgPgRr0YhtOCHq6IlTZXbg7mX3L0iT6RqAee7DsfV3436HvjMdE7OXGSAzOd5cntCbPhEYydakBE3OIIo9MD5SWgXSXC9ioj5xxalGzaSBDEQo6bDxDdietNY3Wq4xE0Io0Vyk6wavA7vEgYoFTgA0-o4AhA0lKVBasVqP5gPMRxT-NJdzj2qeiaK-t5k3xggHe5ejSYrPqluqU1k"/>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary">Private Study Pod A1</h3>
+<span class="bg-primary-fixed text-on-primary-fixed px-sm py-xs rounded text-caption font-label-md">1-2 People</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">
+                        Sound-dampened individual workspace designed for deep focus. Ideal for students and researchers.
+                    </p>
+<div class="flex gap-md mb-lg">
+<div class="flex items-center gap-xs text-outline" title="High-speed Wi-Fi">
+<span class="material-symbols-outlined text-[20px]" data-icon="wifi">wifi</span>
+<span class="text-caption">Wi-Fi</span>
+</div>
+<div class="flex items-center gap-xs text-outline" title="Power Outlets">
+<span class="material-symbols-outlined text-[20px]" data-icon="power">power</span>
+<span class="text-caption">Outlets</span>
+</div>
+<div class="flex items-center gap-xs text-outline" title="Air Conditioning">
+<span class="material-symbols-outlined text-[20px]" data-icon="ac_unit">ac_unit</span>
+<span class="text-caption">AC</span>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-sm rounded-lg hover:bg-secondary-fixed transition-all border-2 border-transparent hover:border-secondary active:scale-[0.98]">
+                        Check Availability
+                    </button>
+</div>
+</div>
+<!-- Space Card: Conference Hall -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden soft-shadow transition-all duration-300">
+<div class="h-56 overflow-hidden relative">
+<div class="absolute top-4 right-4 z-10 bg-surface-container-lowest/90 px-sm py-xs rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#ecc06c]"></span>
+<span class="text-caption font-caption text-on-surface">Reference Only</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A grand, high-ceilinged library conference hall with tiered wooden seating and a large digital projector screen. The room is designed with sophisticated blue acoustic panels and elegant gold lighting fixtures. The atmosphere is professional and inspiring, suitable for large municipal gatherings or educational lectures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqDNflmUbgn6Akux8IRbc2SACH3poXe3kZ6QHJ08wOsKGn0Q2roBO-r4UuDoNkXDdOj1TMxVO57TQyhlzDRco358v8Agpoq2aDVDD_uEzg2Or7V5gSRPc6sHf-lnZ7nmdDKEZI63jnXfZP5txSR2EzDEV6-WLRIv6C6vnxnfH5gkugiuCAjPKuuwsVWnZgDOPX1W8y-_52OOpe_DQr8-6KlaOIp9d00FCeieQa9krsFYYFGkft2YAWOD32iGE6VfnqR7LbJ0xdd10"/>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary">Main Conference Hall</h3>
+<span class="bg-primary-fixed text-on-primary-fixed px-sm py-xs rounded text-caption font-label-md">Up to 50 People</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">
+                        Spacious auditorium equipped with full AV support, tiered seating, and stage area for large events.
+                    </p>
+<div class="flex gap-md mb-lg">
+<div class="flex items-center gap-xs text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="podium">podium</span>
+<span class="text-caption">Stage</span>
+</div>
+<div class="flex items-center gap-xs text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="videocam">videocam</span>
+<span class="text-caption">AV Ready</span>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-sm rounded-lg hover:bg-secondary-fixed transition-all border-2 border-transparent hover:border-secondary active:scale-[0.98]">
+                        Check Availability
+                    </button>
+</div>
+</div>
+<!-- Space Card: Children's Area -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden soft-shadow transition-all duration-300">
+<div class="h-56 overflow-hidden relative">
+<div class="absolute top-4 right-4 z-10 bg-surface-container-lowest/90 px-sm py-xs rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-caption font-caption text-on-surface">Available</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant and welcoming children's reading area in a modern library. The space features whimsical, oversized storybook wall art, colorful bean bags in shades of blue and gold, and low circular tables. Soft, indirect lighting creates a safe and playful environment. The design is orderly yet full of creative inspiration for young readers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm8LLyh22gCcdozazoVcNLfkXCqIcZHGNloXBz0LN4W1BMq16jd_3PRzrtho4wj_7lbq3H8qRKlCfXdLdhj30w5ijUmP9jZuDgnze6YpcFrORVfqb5ztAFJMLPS1xI0ncRDJwEhqorWXG9zbSWBy3GPs8dxbtwAp3OWSm7NZNM4aiL1e7pQ1wpUMbbTpXv5stkSc9Wn06WWykiZABN4-5nqBXCBtwaTv2YPCr_pToVUOvBOMDofOKaNpS-LFxqCbhuvWfj2Pqax3s"/>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary">Discovery Corner</h3>
+<span class="bg-primary-fixed text-on-primary-fixed px-sm py-xs rounded text-caption font-label-md">Family Space</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">
+                        A playful, creative space for interactive reading sessions and early childhood workshops.
+                    </p>
+<div class="flex gap-md mb-lg">
+<div class="flex items-center gap-xs text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="toys">toys</span>
+<span class="text-caption">Learning Kits</span>
+</div>
+<div class="flex items-center gap-xs text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="child_care">child_care</span>
+<span class="text-caption">Safe Zone</span>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-sm rounded-lg hover:bg-secondary-fixed transition-all border-2 border-transparent hover:border-secondary active:scale-[0.98]">
+                        Check Availability
+                    </button>
+</div>
+</div>
+<!-- Space Card: Maker Space -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden soft-shadow transition-all duration-300">
+<div class="h-56 overflow-hidden relative">
+<div class="absolute top-4 right-4 z-10 bg-surface-container-lowest/90 px-sm py-xs rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-gray-400"></span>
+<span class="text-caption font-caption text-on-surface">Checked Out</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-tech library maker space with 3D printers, laser cutters, and large communal workbenches. The industrial-chic aesthetic features exposed steel beams painted in deep blue, with warm gold task lighting at each station. The space is filled with organized tool walls and creative projects in progress, reflecting a tech-forward community hub." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUo2Cyly_RoVF3UHkurM8Bc5KheSrYPvRWTeYxeBh_CXTdpNHjuTY_WSB-XgpXTpZZ6PzPNjExGqblXJ4U4QIFgQ8d0S4erK_sBHAcY6SKze_0n0LyBIzw6uUFFeq8ysXDWRsekdPbjJ3io5UUvDty6xFLy2XJYYRfcmp6oGgmkahpVwprXxOM0mjARj9W8JrngLgjL4yJ2mLS72YduoPTOidygO2yPi_oC20v_6-gGYABIoHZb37JcaPbdPBIaYdJQm7uwICe1mk"/>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary">Creative Lab</h3>
+<span class="bg-primary-fixed text-on-primary-fixed px-sm py-xs rounded text-caption font-label-md">10 Slots</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-1">
+                        Equipped with 3D printers, laser cutters, and professional design software for creators.
+                    </p>
+<div class="flex gap-md mb-lg">
+<div class="flex items-center gap-xs text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="text-caption">3D Print</span>
+</div>
+<div class="flex items-center gap-xs text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="laptop_mac">laptop_mac</span>
+<span class="text-caption">Workstations</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface-variant font-bold py-sm rounded-lg cursor-not-allowed opacity-60">
+                        Fully Booked
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-low w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex flex-col gap-xs items-center md:items-start">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Civic Library</span>
+<p class="font-caption text-caption text-on-surface-variant">© 2024 Municipal Library Services. Knowledge for all.</p>
+</div>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:underline decoration-secondary transition-all" href="#">Contact Us</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:underline decoration-secondary transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:underline decoration-secondary transition-all" href="#">Library Rules</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:underline decoration-secondary transition-all" href="#">Accessibility</a>
+</div>
+<div class="flex gap-md">
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+</div>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+
+        // Simple smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

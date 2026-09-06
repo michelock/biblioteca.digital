@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biblioteca Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#5f3800",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-background": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "primary-container": "#1a5f7a",
+                    "tertiary-fixed": "#ffddbb",
+                    "on-secondary-fixed-variant": "#5d4200",
+                    "surface-container": "#eceeef",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#7b4f16",
+                    "on-secondary-container": "#78580b",
+                    "surface-bright": "#f8fafb",
+                    "secondary-container": "#fed17b",
+                    "inverse-primary": "#92cfee",
+                    "surface-container-low": "#f2f4f5",
+                    "on-tertiary-fixed-variant": "#663e04",
+                    "secondary-fixed": "#ffdea5",
+                    "primary-fixed-dim": "#92cfee",
+                    "outline-variant": "#c0c8cd",
+                    "surface": "#f8fafb",
+                    "on-tertiary-container": "#ffc484",
+                    "inverse-surface": "#2e3132",
+                    "background": "#f8fafb",
+                    "secondary-fixed-dim": "#ecc06c",
+                    "on-primary-container": "#9bd7f7",
+                    "surface-dim": "#d8dadb",
+                    "inverse-on-surface": "#eff1f2",
+                    "primary": "#00475e",
+                    "on-tertiary-fixed": "#2b1700",
+                    "secondary": "#7a590c",
+                    "outline": "#70787d",
+                    "surface-tint": "#236580",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#c0e8ff",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#40484d",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#f7bb78",
+                    "surface-container-high": "#e6e8e9",
+                    "on-secondary-fixed": "#271900",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#001e2b",
+                    "on-primary-fixed-variant": "#004d66"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "0.25rem",
+                    "sm": "0.5rem",
+                    "xl": "2.5rem",
+                    "lg": "1.5rem",
+                    "gutter": "24px",
+                    "md": "1rem",
+                    "container-max": "1280px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-focus:focus {
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #00475e;
+            border-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Transactional Header: Suppressed Nav per Guidelines -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface flex justify-between items-center px-lg py-sm border-b-2 border-secondary">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">Mendoza</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Biblioteca Digital</span>
+</div>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-sm">*</span>
+            Inicio
+        </a>
+</header>
+<main class="min-h-screen flex items-center justify-center pt-24 pb-12 px-md md:px-lg relative">
+<!-- Atmospheric Background Element -->
+<div class="absolute inset-0 z-0 opacity-40 pointer-events-none overflow-hidden">
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed rounded-full blur-[100px]"></div>
+<div class="absolute top-1/2 -right-24 w-[30rem] h-[30rem] bg-secondary-fixed rounded-full blur-[120px] opacity-60"></div>
+</div>
+<div class="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-outline-variant z-10">
+<!-- Left Side: Visual/Welcome Panel -->
+<div class="hidden md:block relative overflow-hidden bg-primary-container">
+<div class="absolute inset-0" data-alt="A serene, high-end library interior with floor-to-ceiling bookshelves, warm atmospheric lighting hitting the wooden textures, and a soft minimalist aesthetic. The image features a shallow depth of field focusing on a comfortable reading nook with a gold-accented lamp. The color palette is dominated by deep blues and elegant golds, reflecting a modern corporate yet welcoming municipal institution." style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSJZ-kpwr3MKOtmY4khoBdtx1OnYTngoXM236jLUmVMoyG4BR5u8pNxz5KuVC730qE7LB7VwxhOnlercEGyjgAs2qxzbBiZeywlN7-Svwb4mUpJ1OCKKExGaiQlOT_kSpgYR1SeOoLoaue/s1600/IMG_20170427_120030278.jpg');
+">
+
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-xl text-on-primary-container">
+<h1 class="font-display-lg text-display-lg mb-md leading-tight">Unete a la comunidad en Camerino Z. Mendoza</h1>
+<p class="font-body-lg text-body-lg text-primary-fixed opacity-90 max-w-md">
+                        Unete a nuestra biblioteca digital y accede a una amplia gama de recursos, eventos exclusivos y contenido educativo. Disfruta de acceso instantáneo y prioridad en eventos para enriquecer tu experiencia de aprendizaje.
+                    </p>
+<div class="mt-xl flex flex-wrap gap-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-fixed"><JEJE/span>
+<span class="font-label-md text-label-md text-surface-bright">¿QUIENES SOMOS?</span>
+</div>
+<!-- Sección ¿QUIÉNES SOMOS? existente -->
+<div class="flex items-center gap-sm">
+  <span class="material-symbols-outlined text-secondary-fixed">person</span>
+  <span class="font-label-md text-label-md text-surface-bright">¿QUIÉNES SOMOS?</span>
+  <!-- Botón nuevo -->
+  <button onclick="mostrarBio()" class="btn">Ver Biografía</button>
+</div>
+
+<!-- Bloque NUEVO con la biografía -->
+<div id="bio" style="display:none; margin-top:10px; background:#fff; padding:15px; border-radius:6px;">
+  <p>
+    El Prof. Emilio Fernández Contreras fue un destacado maestro relacionado con la educación y la cultura de Santa Rosa, actualmente Camerino Z. Mendoza, Veracruz.  
+    Nació el 10 de abril de 1905 en Cañada, Morelos, Puebla, y realizó sus estudios en la Normal de Puebla.  
+    Se trasladó a Santa Rosa, donde desarrolló una importante trayectoria como educador, llegando a ser director de la Escuela América.  
+    Además de su labor como maestro, fue amante de los libros y la literatura, escribiendo sus propias historias.  
+    Su importancia para Ciudad Mendoza se refleja en que una Biblioteca Virtual Digitalizada lleva su nombre, como homenaje a su trayectoria y a su relación con la educación y la cultura.  
+    En conclusión, Emilio Fernández Contreras es recordado principalmente por su labor como maestro, su amor por los libros y su contribución a la educación y la cultura de Santa Rosa, hoy Camerino Z. Mendoza.  
+  </p>
+</div>
+
+<!-- Sección ¿QUÉ OFRECEMOS? existente -->
+<div class="flex items-center gap-sm">
+  <span class="material-symbols-outlined text-secondary-fixed">*</span>
+  <span class="font-label-md text-label-md text-surface-bright">¿QUÉ OFRECEMOS?</span>
+</div>
+
+<!-- Script NUEVO -->
+<script>
+  function mostrarBio() {
+    const bio = document.getElementById("bio");
+    const btn = document.querySelector(".btn");
+    if (bio.style.display === "none") {
+      bio.style.display = "block";
+      btn.textContent = "Ocultar Biografía";
+    } else {
+      bio.style.display = "none";
+      btn.textContent = "Ver Biografía";
+    }
+  }
+</script>
+</div>
+</div>
+</div>
+<!-- Right Side: Registration Form -->
+<div class="p-lg md:p-xl flex flex-col justify-center">
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Crear cuenta</h2>
+<p class="text-on-surface-variant font-body-md">Se parte de nuestra comunidad y accede a una amplia gama de recursos y servicios exclusivos.</p>
+</div>
+<form class="space-y-lg">
+<!-- Full Name -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface block" for="full_name">Nombre</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline"></span>
+<input class="w-full pl-xl pr-md py-md bg-surface-container rounded-lg border-none outline-none form-input-focus transition-all text-on-surface" id="full_name" name="full_name" placeholder="Tu nombre aquí" required="" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface block" for="email">Dirección de correo electrónico</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-xl pr-md py-md bg-surface-container rounded-lg border-none outline-none form-input-focus transition-all text-on-surface" id="email" name="email" placeholder="tu.correo@ejemplo.com" required="" type="email"/>
+</div>
+</div>
+<!-- Contraseña -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface block" for="password">Contraseña</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-xl pr-md py-md bg-surface-container rounded-lg border-none outline-none form-input-focus transition-all text-on-surface" id="password" name="password" placeholder="Min. 8 caracteres" required="" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- aqui -->
+<div class="flex items-start gap-sm pt-xs">
+<input class="mt-1 w-5 h-5 text-primary border-outline-variant rounded focus:ring-primary" id="terms" type="checkbox"/>
+<label class="font-body-md text-on-surface-variant text-sm" for="terms">
+                            Acepto las <a class="text-primary font-bold hover:underline" href="#">reglas de la Biblioteca Digital</a> y las <a class="text-primary font-bold hover:underline" href="#">Politicas de privacidad</a>.
+                        </label>
+</div>
+<!-- CTA Button -->
+<div class="pt-md">
+<button class="w-full py-lg bg-primary text-on-primary font-label-md text-label-md rounded-xl flex items-center justify-center gap-md group hover:bg-primary-container transition-all hover:scale-[1.01] active:scale-95 shadow-md border-b-4 border-secondary" type="submit">
+<span>Crear cuenta</span>
+<span class="material-symbols-outlined text-secondary-fixed group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Footer Link -->
+<div class="mt-xl pt-lg border-t border-outline-variant text-center">
+<p class="font-body-md text-on-surface-variant">
+                        ¿Ya tienes una cuenta? 
+                        <a class="text-primary font-bold hover:underline decoration-secondary decoration-2 underline-offset-4 ml-xs" href="#">Inicia sesión</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component per JSON -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-high border-t border-outline-variant relative z-10">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Biblioteca Digital Municipal de Camerino Z. Mendoza</span>
+<p class="font-caption text-caption text-on-surface-variant opacity-80">© 2026 Servicios de Biblioteca Municipal.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all" href="#">Contactanos</a>
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all" href="#">Politica de Privacidad</a>
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all" href="#">Terminos de Servicio</a>
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all" href="#">Accesibilidad</a>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for password visibility toggle
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        });
+
+        // Form submission prevention for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('This is a UI demo. In a real application, this would process your registration.');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Dashboard | Civic Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#70787d",
+                    "tertiary-container": "#7b4f16",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#eff1f2",
+                    "surface-dim": "#d8dadb",
+                    "background": "#f8fafb",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#9bd7f7",
+                    "on-tertiary-fixed-variant": "#663e04",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f2f4f5",
+                    "secondary-fixed-dim": "#ecc06c",
+                    "tertiary": "#5f3800",
+                    "on-secondary-fixed-variant": "#5d4200",
+                    "on-surface": "#191c1d",
+                    "surface": "#f8fafb",
+                    "on-primary": "#ffffff",
+                    "secondary": "#7a590c",
+                    "on-surface-variant": "#40484d",
+                    "surface-tint": "#236580",
+                    "secondary-fixed": "#ffdea5",
+                    "tertiary-fixed": "#ffddbb",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-container": "#ffc484",
+                    "inverse-primary": "#92cfee",
+                    "on-tertiary-fixed": "#2b1700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001e2b",
+                    "primary-container": "#1a5f7a",
+                    "secondary-container": "#fed17b",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#eceeef",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#c0c8cd",
+                    "primary-fixed": "#c0e8ff",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-fixed-dim": "#f7bb78",
+                    "surface-container-high": "#e6e8e9",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f8fafb",
+                    "on-primary-fixed-variant": "#004d66",
+                    "on-secondary-fixed": "#271900",
+                    "on-secondary-container": "#78580b",
+                    "primary": "#00475e",
+                    "primary-fixed-dim": "#92cfee",
+                    "surface-variant": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "gutter": "24px",
+                    "xs": "0.25rem",
+                    "sm": "0.5rem",
+                    "xl": "2.5rem",
+                    "lg": "1.5rem",
+                    "container-max": "1280px",
+                    "md": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafb;
+            color: #191c1d;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-hover {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b-2 border-secondary px-lg py-sm flex justify-between items-center max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">Civic Library</span>
+<nav class="hidden md:flex items-center gap-lg ml-xl">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Catalog</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Spaces</a>
+<a class="text-primary font-bold border-b-2 border-secondary pb-1 transition-colors duration-200" href="#">Dashboard</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-xl border-none text-label-md focus:ring-2 focus:ring-primary w-64" placeholder="Search the collection..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container rounded-full relative">
+                notifications
+                <span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container rounded-full">account_circle</button>
+</div>
+</header>
+<!-- Dashboard Content Layout -->
+<main class="mt-20 flex-grow px-lg py-lg max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Sidebar / User Profile Column -->
+<aside class="lg:col-span-3 flex flex-col gap-lg">
+<!-- User Profile Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant text-center">
+<div class="w-24 h-24 mx-auto mb-md rounded-full overflow-hidden border-4 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly-looking librarian member in their late 20s, smiling warmly. The lighting is soft and high-key with a clean, blurred library background featuring modern oak bookshelves. The aesthetic is bright and welcoming, aligning with a professional corporate modern design style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD290Djn4bDRblCvVFT6au-vwV5Nn2sfr6noMo4uPsTXN1iT-QQfMMyCVZGqtC3ZPdDZq0pmBnA5rd4wiLO_O2-EhhRphFFvHN9KhJfZQwXp0Lc4ftLc7wtiPij08CgHfjKFyadZtQtSZSJb71CHteIiEwMlf1azRqO0kgbLg0W2RqctlwjInrrJG0LwSsQ6sscUZNoSXNjp2kH3ylmij2K5a2v9CSzVP53rNBlxecOR_PPAIm3HWvQqCndOfF5MqEqxmjQKbq_at0"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Hi, Alex Rivera</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Member since Oct 2022</p>
+<div class="flex justify-center gap-xs mb-lg">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-lg font-label-md text-label-md">Gold Member</span>
+</div>
+<div class="flex flex-col gap-xs text-left">
+<a class="flex items-center gap-sm p-sm hover:bg-surface-container rounded-lg transition-colors text-on-surface" href="#">
+<span class="material-symbols-outlined text-primary">person</span>
+<span class="font-label-md text-label-md">Profile Settings</span>
+</a>
+<a class="flex items-center gap-sm p-sm hover:bg-surface-container rounded-lg transition-colors text-on-surface" href="#">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<span class="font-label-md text-label-md">Library Card</span>
+</a>
+<a class="flex items-center gap-sm p-sm hover:bg-surface-container rounded-lg transition-colors text-on-surface" href="#">
+<span class="material-symbols-outlined text-primary">settings</span>
+<span class="font-label-md text-label-md">Preferences</span>
+</a>
+</div>
+</div>
+<!-- Library News -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-primary mb-md">Library News</h3>
+<div class="space-y-md">
+<div class="group cursor-pointer">
+<p class="font-label-md text-label-md text-secondary mb-1">Upcoming Event</p>
+<h4 class="font-body-md text-body-md font-bold group-hover:text-primary transition-colors">Digital Literacy Workshop</h4>
+<p class="font-caption text-caption text-on-surface-variant">This Saturday, 10:00 AM</p>
+</div>
+<div class="group cursor-pointer">
+<p class="font-label-md text-label-md text-secondary mb-1">Announcement</p>
+<h4 class="font-body-md text-body-md font-bold group-hover:text-primary transition-colors">New Arrival: Sci-Fi Section Expansion</h4>
+<p class="font-caption text-caption text-on-surface-variant">500+ new titles added</p>
+</div>
+</div>
+<button class="w-full mt-lg py-sm font-label-md text-label-md text-primary border border-primary rounded-lg hover:bg-primary-fixed transition-colors">View All News</button>
+</div>
+</aside>
+<!-- Main Dashboard Column -->
+<div class="lg:col-span-9 flex flex-col gap-lg">
+<!-- Greeting & Stats Hero -->
+<section class="bg-primary-container p-xl rounded-xl relative overflow-hidden text-on-primary-container">
+<div class="relative z-10">
+<h1 class="font-display-lg text-display-lg mb-xs">Welcome back, explorer.</h1>
+<p class="font-body-lg text-body-lg opacity-90 max-w-lg">You're making great progress on your reading goals this month. Ready for your next chapter?</p>
+<div class="mt-xl flex gap-lg">
+<div class="flex flex-col">
+<span class="font-display-lg text-headline-lg font-bold">12</span>
+<span class="font-label-md text-label-md uppercase tracking-wider opacity-80">Books Read</span>
+</div>
+<div class="w-px bg-on-primary-container opacity-20"></div>
+<div class="flex flex-col">
+<span class="font-display-lg text-headline-lg font-bold">3</span>
+<span class="font-label-md text-label-md uppercase tracking-wider opacity-80">Active Loans</span>
+</div>
+<div class="w-px bg-on-primary-container opacity-20"></div>
+<div class="flex flex-col">
+<span class="font-display-lg text-headline-lg font-bold">240</span>
+<span class="font-label-md text-label-md uppercase tracking-wider opacity-80">Points</span>
+</div>
+</div>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute -right-16 -bottom-16 w-64 h-64 bg-secondary opacity-10 rounded-full blur-3xl"></div>
+<div class="absolute right-12 top-1/2 -translate-y-1/2 hidden md:block">
+<span class="material-symbols-outlined text-[120px] opacity-20">auto_stories</span>
+</div>
+</section>
+<!-- Currently Borrowed -->
+<section>
+<div class="flex justify-between items-end mb-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Currently Borrowed</h2>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">Manage All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Book Item 1 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex gap-md card-hover">
+<div class="w-24 h-36 flex-shrink-0 bg-surface-container rounded overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist book cover for a title called 'The Silent Patient'. The design features elegant typography on a deep blue background with a single golden feather illustration. The lighting is soft, emphasizing the tactile quality of a hardcover book. Modern, high-end library aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Q3x6UKFb8ueJ7aZOOIA9Qud8n1nobX3NfG4jplo9LCftiPEaPGaFivXjogw_u_NEIKXEXyQckgFGrJsDY-vsnFr_Njj9uhnxEYH2gQdzSojho-mDFqxkLD1OV0n0CjsKcX5NmCcFd_KM3402YQ1VbjRYSar1aJAnAJcY89qkhAnkLz8ytCMTPiwSPIIEsxDiK7Ri_0Q13DQOE0HCik2L0VvUqvlIE9xVx3s-5o3K-0NB0SgmV7PgsyhMse1gbXyRoxcVlmoXA_c"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-body-md text-body-md font-bold">The Silent Patient</h3>
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Due in 3 Days</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Alex Michaelides</p>
+</div>
+<div class="mt-md">
+<div class="flex justify-between font-caption text-caption mb-1">
+<span>Reading Progress</span>
+<span>65%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 65%;"></div>
+</div>
+<button class="mt-md w-full py-2 font-label-md text-label-md bg-surface-container text-on-surface-variant rounded-lg hover:bg-outline-variant transition-colors">Renew Book</button>
+</div>
+</div>
+</div>
+<!-- Book Item 2 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex gap-md card-hover">
+<div class="w-24 h-36 flex-shrink-0 bg-surface-container rounded overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A modern book cover for 'Atomic Habits' by James Clear. The visual features bold, clean san-serif typography with vibrant orange and clean white accents against a sophisticated charcoal background. The style is orderly, professional, and inspiring, reflecting a high-quality community library catalog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMJtSgXM8EIjc-vdYC5qhtvDNIwRSTuQC8WMoYUaxJS7Eh2uS6evnYhystoDUzWzuzPvWfn5EWcWITyIc0noFGeClQEozSHQHNB8gxdOPMrolFnjylkGCyqegpCuuHabyOvOlA5qct4U9oG4p0_Zr2hi8drjYRpWYM1n3KKhk-GmEb7UhA3jHul3qSZNsMBwZ0bWYE7SBHj-3TtHoPhxEuGRh5hNP-Jv122h3p_TmN-GhwYWeVhgDZ77PE4BsgWAPuY5HdAWcm8RA"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-body-md text-body-md font-bold">Atomic Habits</h3>
+<span class="bg-surface-container text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Due in 12 Days</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">James Clear</p>
+</div>
+<div class="mt-md">
+<div class="flex justify-between font-caption text-caption mb-1">
+<span>Reading Progress</span>
+<span>12%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 12%;"></div>
+</div>
+<button class="mt-md w-full py-2 font-label-md text-label-md bg-surface-container text-on-surface-variant rounded-lg hover:bg-outline-variant transition-colors">Renew Book</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Upcoming Reservations & Reading History Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-lg mb-xl">
+<!-- Upcoming Reservations -->
+<section class="md:col-span-3">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Reserved Spaces</h2>
+<div class="space-y-md">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex items-center justify-between card-hover">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-fixed text-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">meeting_room</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-bold">Quiet Study Pod 4</h4>
+<p class="font-caption text-caption text-on-surface-variant">Central Branch • Tomorrow, 2:00 PM</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">more_vert</span>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex items-center justify-between card-hover">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary-fixed text-secondary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-bold">Makerspace: 3D Printer</h4>
+<p class="font-caption text-caption text-on-surface-variant">North Wing • Friday, 4:30 PM</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">more_vert</span>
+</div>
+</div>
+</section>
+<!-- Reading History -->
+<section class="md:col-span-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Recently Finished</h2>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant h-full max-h-[320px] overflow-y-auto custom-scrollbar">
+<ul class="space-y-md">
+<li class="flex items-center gap-sm">
+<div class="w-10 h-14 bg-surface-container rounded-sm flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Small thumbnail of a book cover with a soft green and cream palette, featuring a delicate floral pattern. The style is classic and comforting, resembling a modern poetry collection or literary fiction. Studio lighting on a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDngSwj-c5VutUVSwSl8tqj5Qa5hRhY4YYsV6MWUo4YENEiXsmLEq5Dil1r_mSZS4tEXY_s8KLIZm1Hz9xVP-Llf62HeeLh7Tu2Cl4aA83bB-QFETZ9vrNX_xYYsCTRFlk-RmPvZmcAC8uhPIZR2qaQKQF2crK5FPF3wH75axKc0OOlHpYfytkaO3YNeepIiWp2t3LOCVDSsQEs12lOi0x5zXwLRv-MAKx_GWwv6WgKJADeTOmyH8WmxvFfgMLfW2wB96fq3Ph8O0"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold leading-tight">Circe</p>
+<p class="font-caption text-caption text-on-surface-variant">Madeline Miller</p>
+</div>
+<div class="ml-auto text-secondary font-bold text-caption">5 ★</div>
+</li>
+<li class="flex items-center gap-sm">
+<div class="w-10 h-14 bg-surface-container rounded-sm flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Small thumbnail of a book cover with a striking black and yellow high-contrast design. Bold typography for a non-fiction title about productivity or technology. Professional and orderly aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoiy_zXnJuNsorUtsSlFCyJU_8hL1gMKsXMTMEJwPZTxOcjeOdh9Y7L7QS1csSwkcXqnGxiIxGeQjfmjUpfdA5NOCt16v2iYPtJmxonH4rFisy-GjI_PEsWK8XBY6V0TIpIXSETgYwvLknw8IvbrFQy8u9Ttaymz0XccoTnQ7BYyU6LWch-kxYTUc3lO6h09CDMjlw2SZO9kgvboNuQkNKeEKxRw-NZ9LgFYx3hmu_OqtON7N13H90We1DXt7uWu4qGaY2zY9JaKg"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold leading-tight">Deep Work</p>
+<p class="font-caption text-caption text-on-surface-variant">Cal Newport</p>
+</div>
+<div class="ml-auto text-secondary font-bold text-caption">4 ★</div>
+</li>
+<li class="flex items-center gap-sm opacity-50">
+<div class="w-10 h-14 bg-surface-container rounded-sm flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Small thumbnail of a book cover with a vintage textured look, featuring a faded blue map illustration. Elegant serif typography for a historical novel. Clean and sophisticated corporate library style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGM3YDLq5OfckoAsS8r-GH8YbxFw1uRNid7Lq-CvTau8e1dMUIHj3K3ss1aEhcS2r5hLnTRblnQE65fLwwHBpcG1Xl3qzQkfqeT3w2UMQdFAj2Jkb8-S546Bo7ORScUQhahwnMCEjqB_m1NYZxAZEFsCa98ypCjR49TZhWpXsdYRLvde88Ua7Ik2-xlVXdhRESx6AAjHBQbGW7wAcGKKONz-H16ux2N_7-8M0oxObIKNYERRTIoYVxVbhd-VMc1u1BtO89-CrFt6c"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold leading-tight">Great Expectations</p>
+<p class="font-caption text-caption text-on-surface-variant">Charles Dickens</p>
+</div>
+</li>
+</ul>
+<button class="w-full mt-lg text-primary font-label-md text-label-md hover:underline">Full History</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-high mt-auto border-t border-outline-variant">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface mb-xs">Civic Library</span>
+<p class="font-caption text-caption text-on-surface-variant">© 2024 Municipal Library Services. Knowledge for all.</p>
+</div>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all font-body-md text-body-md" href="#">Contact Us</a>
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all font-body-md text-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all font-body-md text-body-md" href="#">Library Rules</a>
+<a class="text-on-surface-variant font-medium hover:underline decoration-secondary transition-all font-body-md text-body-md" href="#">Accessibility</a>
+</div>
+</footer>
+<!-- FAB for adding new items - relevant to dashboard -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg hover:scale-105 transition-transform flex items-center justify-center group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface px-md py-xs rounded-lg text-label-md font-label-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Reserve Item</span>
+</button>
+<script>
+        // Simple micro-interaction for progress bars
+        document.querySelectorAll('.bg-primary').forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.transition = 'width 1s cubic-bezier(0.4, 0, 0.2, 1)';
+                bar.style.width = width;
+            }, 300);
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic Library | Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .book-card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c0c8cd;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#70787d",
+                      "tertiary-container": "#7b4f16",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#eff1f2",
+                      "surface-dim": "#d8dadb",
+                      "background": "#f8fafb",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#9bd7f7",
+                      "on-tertiary-fixed-variant": "#663e04",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#f2f4f5",
+                      "secondary-fixed-dim": "#ecc06c",
+                      "tertiary": "#5f3800",
+                      "on-secondary-fixed-variant": "#5d4200",
+                      "on-surface": "#191c1d",
+                      "surface": "#f8fafb",
+                      "on-primary": "#ffffff",
+                      "secondary": "#7a590c",
+                      "on-surface-variant": "#40484d",
+                      "surface-tint": "#236580",
+                      "secondary-fixed": "#ffdea5",
+                      "tertiary-fixed": "#ffddbb",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-tertiary-container": "#ffc484",
+                      "inverse-primary": "#92cfee",
+                      "on-tertiary-fixed": "#2b1700",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#001e2b",
+                      "primary-container": "#1a5f7a",
+                      "secondary-container": "#fed17b",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#eceeef",
+                      "on-background": "#191c1d",
+                      "outline-variant": "#c0c8cd",
+                      "primary-fixed": "#c0e8ff",
+                      "inverse-surface": "#2e3132",
+                      "tertiary-fixed-dim": "#f7bb78",
+                      "surface-container-high": "#e6e8e9",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#f8fafb",
+                      "on-primary-fixed-variant": "#004d66",
+                      "on-secondary-fixed": "#271900",
+                      "on-secondary-container": "#78580b",
+                      "primary": "#00475e",
+                      "primary-fixed-dim": "#92cfee",
+                      "surface-variant": "#e1e3e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "gutter": "24px",
+                      "xs": "0.25rem",
+                      "sm": "0.5rem",
+                      "xl": "2.5rem",
+                      "lg": "1.5rem",
+                      "container-max": "1280px",
+                      "md": "1rem"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "caption": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b-2 border-secondary dark:border-secondary-fixed flex justify-between items-center px-lg py-sm">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">Civic Library</span>
+<div class="hidden md:flex gap-lg ml-xl">
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-secondary pb-1" href="#">Catalog</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Spaces</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-xs text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined p-xs text-on-surface-variant hover:text-primary transition-colors">account_circle</button>
+</div>
+</nav>
+<main class="pt-24 pb-xl max-w-container-max mx-auto px-lg">
+<!-- Hero Section -->
+<section class="relative rounded-xl overflow-hidden mb-xl">
+<div class="absolute inset-0 bg-primary-container opacity-10"></div>
+<div class="relative py-xl px-lg md:px-xl flex flex-col md:flex-row items-center gap-xl">
+<div class="w-full md:w-1/2">
+<h1 class="font-display-lg text-display-lg text-primary mb-md">Unlock a World of Knowledge</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">Explore over 250,000 titles, digital archives, and modern learning spaces designed for our community.</p>
+<!-- Main Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-secondary-fixed-dim group-focus-within:text-secondary" style="font-variation-settings: 'FILL' 1;">search</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-md shadow-sm transition-all" placeholder="Search for books, authors, or topics" type="text"/>
+</div>
+</div>
+<div class="hidden md:block w-1/2 h-64 rounded-xl bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="An artistic, high-definition photograph of a sunlit modern library interior. Minimalist wooden bookshelves are filled with colorful organized books, with large glass windows showing a soft green park outside. The lighting is warm and welcoming, reflecting a clean, corporate modern aesthetic with trustful blue and elegant gold atmospheric tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3mLxeIWJNCbAqjFbsqjHT9WfYhljr4qARVnHahIW7DqhBD_-rgFu2g1zC_ywzqw93bzwmoKh1cC3McieFlrlRO_JNxJBluIDunDFq3jM0h3wD4u17xMyDABSUodRyoWOVI2IgHppNRuVTbXxaEetcKho8Um1EPH9nR2pgOYM8n1VHS3Ng_3ZJCmhSPR0P2AP8nkIUC7BfOA_UQVZJXh9HdynReMGPlZeTRzlQE-dRpbHrkcSG-JzqjhlrVnHzmvtsHA8vjC6e3yo')"></div>
+</div>
+</div>
+</section>
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Navigation (Categories) -->
+<aside class="w-full md:w-64 shrink-0">
+<div class="sticky top-24">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-lg">Browse Categories</h3>
+<nav class="flex flex-col gap-sm">
+<a class="group flex items-center justify-between px-md py-sm rounded-lg bg-surface-container-low text-primary font-bold border-l-4 border-secondary" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-md">grid_view</span>
+<span class="font-body-md text-body-md">All Collections</span>
+</div>
+</a>
+<a class="group flex items-center justify-between px-md py-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-md">science</span>
+<span class="font-body-md text-body-md">Science</span>
+</div>
+<span class="text-caption font-caption bg-surface-container-highest px-xs rounded text-outline">2.4k</span>
+</a>
+<a class="group flex items-center justify-between px-md py-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-md">history_edu</span>
+<span class="font-body-md text-body-md">Fiction</span>
+</div>
+<span class="text-caption font-caption bg-surface-container-highest px-xs rounded text-outline">8.1k</span>
+</a>
+<a class="group flex items-center justify-between px-md py-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-md">menu_book</span>
+<span class="font-body-md text-body-md">History</span>
+</div>
+<span class="text-caption font-caption bg-surface-container-highest px-xs rounded text-outline">1.5k</span>
+</a>
+<a class="group flex items-center justify-between px-md py-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-md">psychology</span>
+<span class="font-body-md text-body-md">Philosophy</span>
+</div>
+<span class="text-caption font-caption bg-surface-container-highest px-xs rounded text-outline">942</span>
+</a>
+<a class="group flex items-center justify-between px-md py-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-md">palette</span>
+<span class="font-body-md text-body-md">Arts</span>
+</div>
+<span class="text-caption font-caption bg-surface-container-highest px-xs rounded text-outline">3.2k</span>
+</a>
+</nav>
+<div class="mt-xl p-md bg-secondary-container/20 rounded-xl border border-secondary/20">
+<p class="font-label-md text-label-md text-secondary mb-sm">Library News</p>
+<p class="font-caption text-caption text-on-surface-variant">New digital archive on municipal history now live.</p>
+<button class="mt-md text-primary font-bold text-label-md hover:underline">Read more</button>
+</div>
+</div>
+</aside>
+<!-- Featured Content Grid -->
+<section class="flex-1">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Featured Books</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Curated by our librarians this month</p>
+</div>
+<div class="flex gap-sm">
+<button class="p-sm rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-sm rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
+<!-- Book Card 1 -->
+<div class="group book-card-hover transition-all duration-300 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A sophisticated book cover design for a title called 'The Infinite Archive'. The cover art features elegant gold geometric patterns over a deep navy blue background, giving it a premium, scholarly feel. High-quality textures and professional typography reflect a modern, clean academic aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvTtkgsg8UC-GeFDTsX66zK9OeV76WRxUWOeYWLw2UvyU9urCw_B9UFYM5EniBrMYPaGZIbbwkSDr5oQYgASIJ2jH6bzDll7rPFkFT5sWyA5DByrwZ9sn-rK-mxGYJIlndQvH9_tTzgrYNoOmwAdP2TIzPI1E0Sz2WjfS5PerQTFSF6hkKio46AHv4jKKNJUyQ3-snRwjXLAiJb7PXR84EerI7_KfhrP045M21NG9oVGEDUvFd6LfbKbnKoZlyaXmnUvNHBOU0zJI')"></div>
+<div class="absolute top-2 right-2">
+<span class="bg-secondary text-on-secondary px-sm py-xs rounded-full text-caption font-bold shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                                </span>
+</div>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-1 mb-xs">The Infinite Archive</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Elena Ross</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-caption text-caption text-on-surface-variant">Available</span>
+</div>
+<button class="px-md py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-95 duration-150">Reserve</button>
+</div>
+</div>
+</div>
+<!-- Book Card 2 -->
+<div class="group book-card-hover transition-all duration-300 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Professional book cover for 'Echoes of History'. The design shows a minimalist silhouette of a clock tower against a soft gold sunset sky. The typography is bold and modern, with a layout that suggests authority and cinematic depth, matching a library's scholarly atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoqIEmEP0xNrIM9H3lhJ6njXQC1l-rOJ3QxCaxw718NXJZSVJVxbYjSihU4hKT_Z3bVfcA_kzSNavciWixms6SS1qydIO_iHQqzfmyLvSBXioQHUh_nU8f1v99QOT0eheLCmMk6sYSkSkNjLu97rmlck9D4rkO1MSa5spezx37PZ4Vo5Swehpr-FMm0d6IFNX51g7DHZGctBfrHn_9yjY-8F5hBjBUdZlqkVEw5YoZC-y4hFukfwnJn_dhN33loY6MhaGhP4ouxgY')"></div>
+<div class="absolute top-2 right-2">
+<span class="bg-secondary text-on-secondary px-sm py-xs rounded-full text-caption font-bold shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.7
+                                </span>
+</div>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-1 mb-xs">Echoes of History</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Marcus Thorne</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></div>
+<span class="font-caption text-caption text-on-surface-variant">Ref Only</span>
+</div>
+<button class="px-md py-sm border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-primary/5 transition-colors active:scale-95 duration-150">Details</button>
+</div>
+</div>
+</div>
+<!-- Book Card 3 -->
+<div class="group book-card-hover transition-all duration-300 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A book cover for 'Digital Frontiers' featuring an abstract network of neon blue lines on a clean white background. The style is tech-forward, corporate, and minimalist, utilizing whitespace effectively to create a sense of futuristic exploration and modern research." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBUQp6QLHGTWOdV8cTeffdoJJ4G4KfjYLsYlmtGwZNKwottIYuYTl3WaaSojfQYuxyegOu-H9lhhCtdWHoaNOHOlBZfp9YP-W6UOe_oIBu4I6wA0USj1SkflpQAXrX6pyqFHWsnrRmHJjEW4aT61l7XiLZ1qSBX8_GL05t2FnBeArnC4PCsBiyq6XVVXJcCrfXYFiCsUhUp5l5FRuQMrT9ggBdx8fg8OAkEgb7F8IjrlQ3fHCgvtkn0NVlDvBOgSvlOmOsyBSqUVes')"></div>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-1 mb-xs">Digital Frontiers</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Sarah Chen</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-caption text-caption text-on-surface-variant">Available</span>
+</div>
+<button class="px-md py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-95 duration-150">Reserve</button>
+</div>
+</div>
+</div>
+<!-- Book Card 4 -->
+<div class="group book-card-hover transition-all duration-300 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Book cover for 'The Silent Forest'. A moody but clean landscape photography of a misty pine forest in early morning light. The colors are muted greys and deep greens. The typography is thin and elegant, placed centrally, conveying a sense of calm and mystery appropriate for high-end fiction." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtssObjzaNlhSzmpZGJDjo7iVA1TFnm22NcN7PZu0Hd1C8XFRHvLfnrUG1pYLgWKVJDWKI36lxTJxPNM8hX7mYLry3ABdfzeyBxNL9f0-Q3Xw-fAgKaI0UYKo2kKzraN31zajodUuBUcRNmvH5hiMqp6tuvEPCOtIAQOwUis444Dmj9Kjy3UFWQ7GJxPQk4FLHsMt227LIXWSMrDnIfVPrkS9NnbsYfHep6hOwFRZLdlZfwTx9VaNm-t1tczQSyKTKbHGojjzQLUQ')"></div>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-1 mb-xs">The Silent Forest</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Oliver Green</p>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="font-caption text-caption text-on-surface-variant">Checked Out</span>
+</div>
+<button class="px-md py-sm bg-surface-container-high text-on-surface-variant rounded-lg font-label-md text-label-md cursor-not-allowed">Waitlist</button>
+</div>
+</div>
+</div>
+<!-- More cards can be added here -->
+</div>
+<!-- Secondary Section: Recently Added -->
+<div class="mt-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg">Recently Added</h3>
+<div class="flex overflow-x-auto pb-lg gap-md custom-scrollbar">
+<div class="min-w-[280px] p-md bg-surface-container-low rounded-xl flex gap-md items-center">
+<div class="w-16 h-20 bg-surface-container-high rounded shrink-0 bg-cover bg-center" data-alt="A small book cover image with abstract blue and gold waves, representing a modern poetry or art book." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXAXnjaqD3HSw4o6uJXZI021WHI_V7Uee8a74opl-ui8JK6A-5YJUgyDWQTAebZQMoZo5X18GwjILz3IhzsMbbzjBgSZaG_Upqc9zqoOFe_zg1dDSovhYK_VXx1xHQXDStgceUBJuYETYBq6ABVoN3KKp0hfXPCmwKFMtuidUalQpDfkTDAvhQvBqxpMEqpShH1J3yMwXeZltbSy7CqSPEaYIrDlivYx0_fF-AyHIlJUH7YPW_bBLpqXuKEZVJn2XfWY3yAAm29rE')"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface line-clamp-1">Urban Ecosystems</p>
+<p class="font-caption text-caption text-on-surface-variant">Added 2h ago</p>
+</div>
+</div>
+<div class="min-w-[280px] p-md bg-surface-container-low rounded-xl flex gap-md items-center">
+<div class="w-16 h-20 bg-surface-container-high rounded shrink-0 bg-cover bg-center" data-alt="A small book cover with geometric red and white patterns, signifying a new mathematics or architecture book." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8K0QQ9ezdTFhgc0hf-U3MF1Mdew1XArR4COWoNk3uG6keTim5-N-vtMFdkJqxP68FwdHVh1mhVC_WFsQQpm5xubCj0HuyOSDbpC1VnSVKs1_anOJtNmSdIRXLIZMNr6GciJenPXcFAZ4MNY0Z80yOk_q4zzWjubOpt4kSH2FFLdv26orR2O8Z5xqU4ZTg8XXk4IWGD5FTlGzEQ5oofXqAwf_MMy9_03GEtURfs82ne494pd4c0k6XtGUNTGUi5M_bMS7zoBtN4dk')"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface line-clamp-1">Structure &amp; Form</p>
+<p class="font-caption text-caption text-on-surface-variant">Added 5h ago</p>
+</div>
+</div>
+<div class="min-w-[280px] p-md bg-surface-container-low rounded-xl flex gap-md items-center">
+<div class="w-16 h-20 bg-surface-container-high rounded shrink-0 bg-cover bg-center" data-alt="A small book cover with a minimalist portrait of a historic figure, suggesting a recent biography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAB9MzEg0Ih8VsogpFj-ezfPf7LYHaUJ09HJE9CjF9rIRQ-G2CHdM8cAwe7R2-uqm68izXMXrK571BfWBDiMP23aeIx9nJYaqRMEWYHUE7Rg264HNXQcxvvvxa8F46NPY9pC5YWXu_y_BmMGCeV33ItRF-EbyoTfh6BOULk2BHE_fP3BCIrL_cEXsT-fdQb9GdY_h8uMSwwVtgg9DjFDbUVJez_YrEykvD6HM2pWK7NaqOC3qOTShAs9kLBXtZS73M7f4HWeffAEuU')"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface line-clamp-1">Lincoln's Legacy</p>
+<p class="font-caption text-caption text-on-surface-variant">Added yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-low w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="text-center md:text-left">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block mb-xs">Civic Library</span>
+<p class="font-caption text-caption text-on-surface-variant">© 2024 Municipal Library Services. Knowledge for all.</p>
+</div>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-secondary transition-all" href="#">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-secondary transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-secondary transition-all" href="#">Library Rules</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-secondary transition-all" href="#">Accessibility</a>
+</div>
+<div class="flex gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">language</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">rss_feed</button>
+</div>
+</footer>
+<!-- Micro-interaction script for the search bar and card effects -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.querySelector('input[type="text"]');
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('scale-[1.01]');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('scale-[1.01]');
+            });
+
+            // Smooth entrance for cards
+            const cards = document.querySelectorAll('.book-card-hover');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>
