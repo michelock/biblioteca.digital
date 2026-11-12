@@ -264,23 +264,68 @@
 </div>
 </footer>
 <script>
-        // Simple micro-interaction for password visibility toggle
-        document.querySelector('button[type="button"]').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            const icon = this.querySelector('.material-symbols-outlined');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.innerText = 'visibility_off';
-            } else {
-                passwordInput.type = 'password';
-                icon.innerText = 'visibility';
-            }
-        });
+        // contraseña visible
+        const toggleButton = document.querySelector('button[type="button"]');
+        if (toggleButton) {
+            toggleButton.addEventListener('click', function() {
+                const passwordInput = document.getElementById('password');
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.innerText = 'visibility_off';
+                } else {
+                    passwordInput.type = 'password';
+                    icon.innerText = 'visibility';
+                }
+            });
+        }
 
-        // Form submission prevention for demo
-        document.querySelector('form').addEventListener('submit', (e) => {
+        // registro de usuario con backend
+        document.querySelector('form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('This is a UI demo. In a real application, this would process your registration.');
+
+            const nombre = document.getElementById('full_name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const terms = document.getElementById('terms').checked;
+
+            if (!nombre || !email || password.length < 8 || !terms) {
+                alert('Por favor, completa todos los campos correctamente y acepta los términos.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('nombre', nombre);
+            formData.append('email', email);
+            formData.append('password', password);
+
+            try {
+                const response = await fetch('../../../public/index.php?action=register', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin'
+                });
+
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    const mensaje = result.errors ? result.errors.join('\n') : 'No se pudo registrar el usuario.';
+                    alert(mensaje);
+                    return;
+                }
+
+                localStorage.setItem('usuario', JSON.stringify({
+                    nombre,
+                    email,
+                    password
+                }));
+
+                alert('Cuenta creada correctamente.');
+                window.location.href = '../panel_de_usuario/code.html';
+            } catch (error) {
+                console.error(error);
+                alert('Error de conexión con el servidor. Verifica que PHP esté corriendo y que la ruta del backend sea correcta.');
+            }
         });
     </script>
 </body>
